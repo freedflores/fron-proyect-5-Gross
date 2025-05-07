@@ -11,3 +11,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Fondo negro claro global y texto claro */
+body {
+  background-color: #1c1c1c;
+  color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* Asegura que ocupe toda la altura de la pantalla */
+html, body, #root {
+  height: 100%;
+}
+
+/* Fondo con imagen global */
+body {
+  background-image: url('./assets/fondo01.jpg'); /* si está en public/ */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* Ocupa toda la altura de la pantalla */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Overlay oscuro */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Puedes ajustar la opacidad aquí */
+  z-index: -1;
+}

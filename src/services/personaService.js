@@ -1,30 +1,83 @@
 // src/services/personaService.js
-const API_URL = "http://localhost:3001/api/v1/personas"; // Cambia esta URL a tu URL real
+const API_URL = "http://localhost:3000/api/v1/personas"; // Cambia esta URL a tu URL real
 
+const getAuthHeaders = () => ({
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${localStorage.getItem("token")}`,
+});
+
+const manejarError = (error) => {
+  console.error("Error en personaService:", error.message);
+  if (error.message.includes("401") || error.message.includes("Token")) {
+    localStorage.removeItem("token");
+    window.location.href = "/login"; // Redirecciona al login si el token expiró
+  }
+};
+
+// Obtener todas las personas
 export const obtenerPersonas = async () => {
-  const respuesta = await fetch(API_URL);
-  const data = await respuesta.json();
-  return data; // La API devuelve un array de objetos con { id, nombre, edad, etc. }
+  try {
+    const respuesta = await fetch(API_URL, {
+      headers: getAuthHeaders(),
+    });
+
+    if (!respuesta.ok) {
+      throw new Error(`Error ${respuesta.status} al obtener personas`);
+    }
+
+    return await respuesta.json();
+  } catch (error) {
+    manejarError(error);
+    return []; // Devuelve un array vacío para evitar romper el front
+  }
 };
 
+// Agregar una persona
 export const agregarPersona = async (persona) => {
-  await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(persona),
-  });
+  try {
+    const respuesta = await fetch(API_URL, {
+      method: "POST",
+      headers: getAuthHeaders(),
+      body: JSON.stringify(persona),
+    });
+
+    if (!respuesta.ok) {
+      throw new Error(`Error ${respuesta.status} al agregar persona`);
+    }
+  } catch (error) {
+    manejarError(error);
+  }
 };
 
+// Actualizar persona por ID
 export const actualizarPersona = async (id, persona) => {
-  await fetch(`${API_URL}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(persona),
-  });
+  try {
+    const respuesta = await fetch(`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: getAuthHeaders(),
+      body: JSON.stringify(persona),
+    });
+
+    if (!respuesta.ok) {
+      throw new Error(`Error ${respuesta.status} al actualizar persona`);
+    }
+  } catch (error) {
+    manejarError(error);
+  }
 };
 
+// Eliminar persona por ID
 export const eliminarPersona = async (id) => {
-  await fetch(`${API_URL}/${id}`, {
-    method: "DELETE",
-  });
+  try {
+    const respuesta = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+      headers: getAuthHeaders(),
+    });
+
+    if (!respuesta.ok) {
+      throw new Error(`Error ${respuesta.status} al eliminar persona`);
+    }
+  } catch (error) {
+    manejarError(error);
+  }
 };

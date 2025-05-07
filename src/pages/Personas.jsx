@@ -45,7 +45,16 @@ const Personas = () => {
   return (
     <div>
       <h2>Gestión de Personas</h2>
-      <Button className="mb-3" variant="primary" onClick={() => setMostrarModal(true)}>Agregar Persona</Button>
+      <Button 
+      className="mb-3" 
+      variant="primary"
+       onClick={() => {
+       setPersonaSeleccionada(null);
+       setMostrarModal(true);
+      }
+      }
+       >Agregar Persona</Button>
+
       <PersonaList personas={personas} seleccionar={seleccionarPersona} eliminar={eliminar} />
       <PersonaForm
         show={mostrarModal}
