@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Table, Button, Pagination } from "react-bootstrap";
 import Swal from "sweetalert2";
+import '../../style/mesa.css';
 
 const MesaList = ({ mesas, seleccionar, eliminar }) => {
   const [paginaActual, setPaginaActual] = useState(1);
@@ -62,10 +63,10 @@ const MesaList = ({ mesas, seleccionar, eliminar }) => {
 
   return (
     <>
-      <Table striped bordered hover>
+      <Table className="tabla-mesas" bordered hover>
         <thead>
           <tr>
-            <th>MesaID</th>
+            {/* <th>MesaID</th> <-- Oculto */}
             <th>Número de Mesa</th>
             <th>Capacidad</th>
             <th>Ubicación</th>
@@ -75,8 +76,8 @@ const MesaList = ({ mesas, seleccionar, eliminar }) => {
         </thead>
         <tbody>
           {mesasPaginadas.map((mesa) => (
-            <tr key={mesa}>
-              <td>{mesa.MesaID}</td>
+            <tr key={mesa.MesaID}>
+              {/* <td>{mesa.MesaID}</td> <-- Oculto */}
               <td>{mesa.NumeroMesa}</td>
               <td>{mesa.Capacidad}</td>
               <td>{mesa.Ubicacion}</td>

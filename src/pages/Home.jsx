@@ -1,28 +1,28 @@
 import React from "react";
+import "../style/Pizza.css";
 
 const Home = () => {
   return (
-    <div className="text-center">
-      <h1>Bienvenido a Massimo Grosso</h1>
-      <p>Web App creado por los alumnos de DSI - V</p>
-      <img
-        src={require('../assets/foto-cliente.jpg')}
-        alt="Massimo Logo"
-        style={{
-          display: "block",
-          margin: "30px auto 0",
-          maxWidth: "550px",
-          width: "100%",
-          height: "auto",
-          border: "4px solid white", // Puedes cambiar el color si quieres
-          borderRadius: "10px",
-          boxShadow: "0 0 20px rgba(255, 255, 255, 0.7)", // Este es el glow blanco 
-          marginTop: "3px"
-        }}
-      />
+    <div className="full-screen-wrapper">
+      <div className="pizza-body">
+        <div className="animated-text">
+          <h1>
+            <span className="word">Bienvenido</span>&nbsp;
+            <span className="word">a</span>&nbsp;
+            <span className="word">Massimo</span>&nbsp;
+            <span className="word">Grosso</span>
+          </h1>
+          <p className="subtext">Web App creado por los alumnos de DSI - V</p>
+
+          {/* Botones */}
+          <div className="button-group">
+            <button className="home-button">Ver Reservas</button>
+            <button className="home-button">Administrar Productos</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Home;
-

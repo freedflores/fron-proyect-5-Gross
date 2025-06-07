@@ -23,9 +23,17 @@ const Login = () => {
       });
 
       const token = res.data.token;
-      localStorage.setItem("token", token);
-
       const decoded = jwtDecode(token);
+      const userRole = decoded.rol?.toLowerCase();
+      const selectedRole = role.toLowerCase();
+
+      if (userRole !== selectedRole) {
+        setMessage("Error: El rol seleccionado no corresponde al usuario.");
+        localStorage.removeItem("token");
+        return;
+      }
+
+      localStorage.setItem("token", token);
       setUser(decoded);
       setMessage("¡Bienvenido al sistema!");
 
@@ -38,12 +46,34 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ height: "80vh" }}>
-      <Card style={{ width: "25rem", backgroundColor: "black", border: "3px solid white", color: "white" }}>
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${require("../assets/fondo01.jpg")})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Card
+        style={{
+          width: "25rem",
+          backgroundColor: "black",
+          border: "3px solid white",
+          color: "white",
+        }}
+      >
         <Card.Body>
           <Card.Title className="mb-4 text-center">
             <img
-              src={require('../assets/massimo-logo.png')}
+              src={require("../assets/massimo-logo.png")}
               alt="Logo"
               style={{
                 width: "80px",
@@ -51,16 +81,39 @@ const Login = () => {
                 borderRadius: "50%",
                 objectFit: "cover",
                 border: "2px solid #fdfefe",
-                marginBottom: "10px"
+                marginBottom: "10px",
               }}
             />
             <br />
             <i className="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
           </Card.Title>
-          {message && <Alert variant="info">{message}</Alert>}
+          {message && (
+            <Alert
+              variant={
+                message.startsWith("Error") ||
+                message === "Credenciales incorrectas"
+                  ? "danger"
+                  : "success"
+              }
+            >
+              {message}
+            </Alert>
+          )}
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label><img src={require('../assets/email-icon.png')} alt="Email Icon" style={{ width: "20px", height: "20px", marginRight: "8px", marginTop: "-4px" }} />Email:</Form.Label>
+              <Form.Label>
+                <img
+                  src={require("../assets/email-icon.png")}
+                  alt="Email Icon"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    marginRight: "8px",
+                    marginTop: "-4px",
+                  }}
+                />
+                Email:
+              </Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Ingresa tu email"
@@ -70,7 +123,19 @@ const Login = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label><img src={require('../assets/password-icon.png')} alt="Password Icon" style={{ width: "20px", height: "20px", marginRight: "8px", marginTop: "-8px" }} />Contraseña:</Form.Label>
+              <Form.Label>
+                <img
+                  src={require("../assets/password-icon.png")}
+                  alt="Password Icon"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    marginRight: "8px",
+                    marginTop: "-8px",
+                  }}
+                />
+                Contraseña:
+              </Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Ingresa tu contraseña"
@@ -80,10 +145,7 @@ const Login = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>
-                {/* <img src={require('../assets/role-icon.png')} alt="Role Icon" style={{ width: "20px", height: "20px", marginRight: "8px", marginTop: "-4px" }} /> */}
-                Rol:
-              </Form.Label>
+              <Form.Label>Rol:</Form.Label>
               <Form.Control
                 as="select"
                 value={role}
@@ -91,15 +153,17 @@ const Login = () => {
                 required
               >
                 <option value="">Selecciona un rol</option>
-                <option value="admin">Administrador</option>
+                <option value="administrador">Administrador</option>
                 <option value="mesero">Mesero</option>
                 <option value="cajero">Cajero</option>
               </Form.Control>
             </Form.Group>
-            <Button variant="danger"
+            <Button
+              variant="danger"
               type="submit"
               className="w-100"
-              style={{ marginTop: "10px" }}>
+              style={{ marginTop: "10px" }}
+            >
               Ingresar
             </Button>
           </Form>

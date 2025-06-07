@@ -28,7 +28,6 @@ html, body, #root {
 
 /* Fondo con imagen global */
 body {
-  background-image: url('./assets/fondo01.jpg'); /* si está en public/ */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

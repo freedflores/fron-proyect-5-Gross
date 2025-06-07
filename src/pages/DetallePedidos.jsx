@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  obtenerDetallesPedido,
+  obtenerDetallesPedidos,
   agregarDetallePedido,
   actualizarDetallePedido,
   eliminarDetallePedido,
 } from "../services/detallePedidoService";
-
-import DetallePedidoList from "../components/DetallePedidoList";
-import DetallePedidoForm from "../components/DetallePedidoForm";
+import DetallePedidoList from "../components/detallesPedidos/DetallePedidoList";
+import DetallePedidoForm from "../components/detallesPedidos/DetallePedidoForm";
 import { Button } from "react-bootstrap";
 
 const DetallePedidos = () => {
@@ -20,7 +19,7 @@ const DetallePedidos = () => {
   }, []);
 
   const cargarDetalles = async () => {
-    const datos = await obtenerDetallesPedido();
+    const datos = await obtenerDetallesPedidos();
     setDetalles(datos);
   };
 
@@ -60,11 +59,7 @@ const DetallePedidos = () => {
       >
         Agregar Detalle
       </Button>
-      <DetallePedidoList
-        detalles={detalles}
-        seleccionar={seleccionarDetalle}
-        eliminar={eliminar}
-      />
+      <DetallePedidoList detalles={detalles} seleccionar={seleccionarDetalle} eliminar={eliminar} />
       <DetallePedidoForm
         show={mostrarModal}
         handleClose={() => setMostrarModal(false)}

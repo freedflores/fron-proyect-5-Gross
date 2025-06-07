@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { obtenerPedidos, agregarPedido, actualizarPedido, eliminarPedido } from "../services/pedidoService";
-import PedidoList from "../components/PedidoList";
-import PedidoForm from "../components/PedidoForm";
+import PedidoList from "../components/pedidos/PedidoList";
+import PedidoForm from "../components/pedidos/PedidoForm";
 import { Button } from "react-bootstrap";
 
 const Pedidos = () => {

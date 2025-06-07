@@ -1,0 +1,45 @@
+/* Estilo base de la tabla */
+.tabla-clientes {
+  background-color: #2c2c2c !important;
+  color: white !important;
+  border-collapse: collapse !important;
+  border: 1px solid #444 !important;
+}
+
+/* Encabezado */
+.tabla-clientes thead {
+  background-color: #1f1f1f !important;
+  color: white !important;
+  border-bottom: 2px solid #555 !important;
+}
+
+/* Celdas */
+.tabla-clientes tbody tr td {
+  background-color: #333 !important;
+  color: white !important;
+  border-top: 1px solid #444 !important;
+  border-bottom: 1px solid #444 !important;
+  border-left: 1px solid #444 !important;
+  border-right: 1px solid #444 !important;
+}
+
+/* Resaltar fila al pasar el mouse */
+.tabla-clientes tbody tr:hover {
+  background-color: #444 !important;
+}
+
+/* Quitar el color blanco de los bordes del <table> */
+.tabla-clientes > :not(caption) > * > * {
+  border-color: #444 !important;
+}
+
+.btn-warning {
+  background-color: #f0ad4e;
+  border: none;
+  color: #000;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  border: none;
+}

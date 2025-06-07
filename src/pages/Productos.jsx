@@ -5,8 +5,8 @@ import {
   actualizarProducto,
   eliminarProducto,
 } from "../services/productoService";
-import ProductoList from "../components/ProductoList";
-import ProductoForm from "../components/ProductoForm";
+import ProductoList from "../components/productos/ProductoList";
+import ProductoForm from "../components/productos/ProductoForm";
 import { Button } from "react-bootstrap";
 
 const Productos = () => {

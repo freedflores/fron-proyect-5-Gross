@@ -1,5 +1,5 @@
 // src/services/personaService.js
-const API_URL = "http://localhost:3000/api/v1/personas"; // Cambia esta URL a tu URL real
+const API_URL = "http://localhost:3000/api/v1/personas";
 
 const getAuthHeaders = () => ({
   "Content-Type": "application/json",

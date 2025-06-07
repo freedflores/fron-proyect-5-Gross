@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { obtenerClientes, agregarCliente, actualizarCliente, eliminarCliente } from "../services/clienteService";
-import ClienteList from "../components/ClienteList";
-import ClienteForm from "../components/ClienteForm";
+import ClienteList from "../components/clientes/ClienteList";
+import ClienteForm from "../components/clientes/ClienteForm";
 import { Button } from "react-bootstrap";
 
 const Clientes = () => {

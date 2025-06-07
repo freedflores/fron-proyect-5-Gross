@@ -1,0 +1,38 @@
+.mesa-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 20px;
+  padding: 20px;
+}
+
+.mesa-card {
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
+}
+
+.mesa-card:hover {
+  transform: scale(1.05);
+}
+
+/* Colores por estado */
+.mesa-card.disponible {
+  background-color: #28a745; /* verde */
+}
+
+.mesa-card.ocupada {
+  background-color: #dc3545; /* rojo */
+}
+
+.mesa-card.reservada {
+  background-color: #fd7e14; /* naranja */
+}
+
+.mesa-card.mantenimiento {
+  background-color: #6c757d; /* gris */
+}

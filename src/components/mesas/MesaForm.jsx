@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
+import '../../style/mesa.css';
 
 const MesasForm = ({ show, handleClose, agregar, actualizar, mesaSeleccionada }) => {
   const [mesa, setMesa] = useState({

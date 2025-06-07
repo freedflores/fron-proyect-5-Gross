@@ -1,0 +1,91 @@
+/* Envoltorio que ocupa toda la pantalla */
+.full-screen-wrapper {
+  width: 1020;
+  height: 70vh;
+  background-color: #1f1f1f; /* Fondo gris oscuro tipo empresarial */
+  position: relative;
+  overflow: hidden;
+}
+
+.pizza-body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+
+.animated-text {
+  text-align: center;
+  padding-top: 30px;
+  color: white;
+  z-index: 2;
+  position: absolute;
+  top: 10px;
+}
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px) scale(0.8);
+  animation: popIn 0.6s forwards;
+}
+
+.word:nth-child(1) { animation-delay: 0s; }
+.word:nth-child(2) { animation-delay: 0.3s; }
+.word:nth-child(3) { animation-delay: 0.6s; }
+.word:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.subtext {
+  opacity: 0;
+  animation: fadeInText 1s forwards;
+  animation-delay: 1.8s;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+  }
+}
+.button-group {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  background-color: #c0392b;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.home-button:hover {
+  background-color: #e74c3c;
+  transform: scale(1.05);
+}
+

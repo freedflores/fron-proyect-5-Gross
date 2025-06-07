@@ -11,7 +11,11 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        setUser({ name: decoded.name, id: decoded.id }); // asegúrate que el token incluya 'name'
+        setUser({
+          name: decoded.name,
+          id: decoded.id,
+          rol: decoded.rol, // ✅ ahora también cargamos el rol
+        });
       } catch (error) {
         console.error("Token inválido:", error);
         setUser(null);

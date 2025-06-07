@@ -1,0 +1,136 @@
+.acercade-wrapper {
+  height: 100vh;
+  background-color: #000000;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  border: white 2px solid;
+}
+
+.acercade-container {
+  background-color: #000000;
+  padding: 4rem 1.5rem;
+  border: white 2px solid;
+}
+
+.acercade-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .acercade-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.acercade-text {
+  position: relative;
+  z-index: 2;
+}
+
+.acercade-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #6b7280;
+  font-size: 1rem bold;
+  margin-bottom: 0.75rem;
+}
+
+.acercade-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  -webkit-text-stroke-width: 2px; /* Para navegadores basados en Webkit (Chrome, Safari) */
+  -webkit-text-stroke-color: #c71111; /* Color del contorno para Webkit */
+  text-stroke-width: 2px;         /* Propiedad estándar para el grosor del contorno */
+  text-stroke-color: #c71111;         /* Propiedad estándar para el color del contorno */
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.acercade-description {
+  font-size: 1.1rem;
+  color: white;
+  line-height: 1.7;
+}
+
+.acercade-image-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-background {
+  position: absolute;
+  width: 350px;
+  height: 300px;
+  background-color: #b1060f;
+  border-radius: 50%;
+  top: -40px;
+  left: -40px;
+  z-index: 0;
+}
+
+.dots-pattern {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 10px 10px;
+  bottom: -20px;
+  left: 20px;
+  z-index: 0;
+}
+
+.acercade-image {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  height: 80%;
+  border-radius: 50%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border: #fdfefe 2px solid;
+}
+
+.acercade-content.reverse {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .acercade-content.reverse {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .acercade-content.reverse .acercade-image-container {
+    padding-left: 2rem; /* Mueve la imagen un poco a la derecha */
+  }
+
+  .acercade-content.reverse .acercade-image {
+    width: 85%;
+    height: auto;
+  }
+
+   .acercade-content.reverse .circle-background {
+    left: 0; /* Mover un poco más a la derecha respecto a la original */
+  }
+
+  .acercade-content.reverse .dots-pattern {
+    left: 40px; /* Opcional: también puedes mover los puntos decorativos */
+  }
+}
+

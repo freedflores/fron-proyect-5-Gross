@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { obtenerPromociones, agregarPromocion, actualizarPromocion, eliminarPromocion } from "../services/promocionService";
-import PromocionList from "../components/PromocionList";
-import PromocionForm from "../components/PromocionForm";
+import PromocionList from "../components/promociones/PromocionList";
+import PromocionForm from "../components/promociones/PromocionForm";
 import { Button } from "react-bootstrap";
 
 const Promociones = () => {
